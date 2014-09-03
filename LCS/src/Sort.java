@@ -25,7 +25,7 @@ public class Sort {
 		
 	}
 	
-	public void mergeSort(List<Integer> arrays,int p,int r){
+	private void mergeSort(List<Integer> arrays,int p,int r){
 		if(p>=r) return;
 		int q = (p+r)/2;
 		mergeSort(arrays,p,q);
@@ -33,7 +33,7 @@ public class Sort {
 		merge(arrays,p,q,r);
 	}
 	
-	public static void merge(List<Integer> arrays,int p,int q,int r){
+	private static void merge(List<Integer> arrays,int p,int q,int r){
 		int n1 = q-p+1;
 		int n2 = r-q;
 		List<Integer> left = new ArrayList<Integer>();
@@ -74,13 +74,13 @@ public class Sort {
 		return lis;
 	}
 	
-	public void buildMaxHeap(List<Integer> arrays){
+	private void buildMaxHeap(List<Integer> arrays){
 		for(int i = arrays.size()/2-1;i>=0;i--){
 			maxHeapify(arrays,i);
 		}
 	}
 	
-	public void maxHeapify(List<Integer> arrays,int i){
+	private void maxHeapify(List<Integer> arrays,int i){
 		int largest = i;
 		if(2*i+1<arrays.size() && arrays.get(2*i+1).compareTo(arrays.get(largest))>0)
 			largest = 2*i+1;
