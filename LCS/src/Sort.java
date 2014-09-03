@@ -94,9 +94,33 @@ public class Sort {
 		}
 	}
 	
+	public void quickSort(List<Integer> arrays){
+		quickSort(arrays,0,arrays.size()-1);
+	}
 	
-	
-	
+	private void quickSort(List<Integer> arrays,int p,int r){
+		if(p>=r)
+			return;
+		int q = partition(arrays,p,r);
+		quickSort(arrays,p,q-1);
+		quickSort(arrays,q+1,r);
+	}
+	private int partition(List<Integer> arrays,int p,int r){
+		Integer main = arrays.get(r);
+		int i = p-1;
+		for(int j=p;j<r;j++){
+			if(arrays.get(j).compareTo(main)<=0){
+				i++;
+				Integer temp = arrays.get(i);
+				arrays.set(i, arrays.get(j));
+				arrays.set(j, temp);
+			}
+		}
+		Integer temp = arrays.get(i+1);
+		arrays.set(i+1,main);
+		arrays.set(r, temp);
+		return i+1;
+	}
 	
 	
 	
@@ -125,6 +149,7 @@ public class Sort {
  		
  		//new Sort().mergeSort(lis);
  		//lis = new Sort().heapSort(lis);
+ 		new Sort().quickSort(lis);
  		for(Integer i : lis){
  			System.out.println(i);
  		}
